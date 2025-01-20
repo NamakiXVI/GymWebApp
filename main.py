@@ -23,12 +23,19 @@ class Workout(db.Model):
 with app.app_context():
     db.create_all()
 
+def restart_db():
+    db.session.query(Workout).delete()
+    db.session.commit()
+    print("database got deleted")
+
 @app.route("/<user>", methods=['GET', 'POST'])
 def main(user):
     if request.method == 'POST':
+        content = request.form.get('content')
+
         new_Workout = Workout(
             user = user,
-            workout = request.form['content'],
+            workout = content,
         )
         db.session.add(new_Workout)
         db.session.commit()
@@ -46,6 +53,12 @@ def main(user):
             for workout in messages
         ]
         return jsonify({'messages': workout_data})
+
+        if form.validate_on_submit():
+            print("pressed")
+            if 'restart-db' in request.form:
+                print("button pressed")
+                restart_db()
 
     messages_ = Workout.query.order_by(Workout.date).all()
     return render_template('index.html', messages_=messages_, user=user)

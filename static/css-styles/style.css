@@ -1,12 +1,17 @@
-.message_style
-{
-    border-color: black;
-    border-radius: 25 25 25 25;
-}
-
 .form-styles
 {
     margin: 5%;
+}
+
+.restart
+{
+  display: flex;
+  justify-content: center;
+}
+
+.username
+{
+  text: #414856;
 }
 
 #checklist {
@@ -14,7 +19,7 @@
     --text: #414856;
     --check: #4f29f0;
     --disabled: #c3c8de;
-    --width: 100%;
+    --width: auto;
     --height: auto;
     --border-radius: 10px;
     background: var(--background);
@@ -29,8 +34,6 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 10%;
-    border: 1px solid #ccc; /* Optional: Add a border for visual distinction */
-    box-sizing: border-box; /* Include padding in width calculations */
   }
   
   #checklist label {
@@ -216,3 +219,36 @@
       box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0, 14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0, -14px -8px 0 0px #4f29f0;
     }
   }
+
+/* From Uiverse.io by xueyuantan */ 
+.restartbutton {
+  width: 9em;
+  height: 3em;
+  border-radius: 30em;
+  font-size: 15px;
+  font-family: inherit;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 6px 6px 12px #c5c5c5,
+              -6px -6px 12px #ffffff;
+ }
+ 
+ .restartbutton::before {
+  content: '';
+  width: 0;
+  height: 3em;
+  border-radius: 30em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+ }
+ 
+ .restartbutton:hover::before {
+  width: 9em;
+ }
